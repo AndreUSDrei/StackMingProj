@@ -1,0 +1,128 @@
+[
+    {
+        "id": "a14fc74ea3b3cc40",
+        "type": "tab",
+        "label": "Fluxo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "aecadf89136fe40b",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "d_mqtt",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "6fd6b0742fffc126",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "database",
+        "name": "",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://d_influxdb:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "f9e1d2ee6535c694",
+        "type": "mqtt in",
+        "z": "a14fc74ea3b3cc40",
+        "name": "Entrada Wokwi",
+        "topic": "esp32/sensor",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "aecadf89136fe40b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "64857d9ed83e57a1",
+                "48ddecbf10b7fe74"
+            ]
+        ]
+    },
+    {
+        "id": "64857d9ed83e57a1",
+        "type": "json",
+        "z": "a14fc74ea3b3cc40",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [
+                "0fb7a940c550913e"
+            ]
+        ]
+    },
+    {
+        "id": "0fb7a940c550913e",
+        "type": "influxdb out",
+        "z": "a14fc74ea3b3cc40",
+        "influxdb": "6fd6b0742fffc126",
+        "name": "influx conncection",
+        "measurement": "sensors",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "StackMingProj",
+        "bucket": "sensor_data",
+        "x": 530,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "48ddecbf10b7fe74",
+        "type": "debug",
+        "z": "a14fc74ea3b3cc40",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 240,
+        "wires": []
+    }
+]
