@@ -1,0 +1,1 @@
+Os arquivos arquitetura.md e conficuracao EC2.md são arquivos que já estavam presentes na pasta do projeto ao clonar a parte inicial do projeto do professor andré, não foram feitos pelos alunos do grupo.
